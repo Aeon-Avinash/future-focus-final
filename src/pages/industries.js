@@ -77,7 +77,10 @@ class IndustriesPage extends Component {
         selectedIndustry: this.context.industrySelected,
       })
     }
-    this.scrollToTargetRef = () => {
+  }
+
+  scrollToTargetRef = () => {
+    if (window) {
       window.scrollTo({
         behavior: "smooth",
         top: this.targetRef.current.offsetTop,

@@ -76,7 +76,10 @@ class ServicesPage extends Component {
         selectedService: this.context.serviceSelected,
       })
     }
-    this.scrollToTargetRef = () => {
+  }
+
+  scrollToTargetRef = () => {
+    if (window) {
       window.scrollTo({
         behavior: "smooth",
         top: this.targetRef.current.offsetTop,
