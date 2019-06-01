@@ -76,18 +76,23 @@ class ServicesPage extends Component {
         selectedService: this.context.serviceSelected,
       })
     }
+    this.scrollToTargetRef = () => {
+      window.scrollTo({
+        behavior: "smooth",
+        top: this.targetRef.current.offsetTop,
+      })
+    }
   }
 
   selectService = id => {
-    this.setState({
-      selectedService: id,
-    }, () => {
-      this.scrollToTargetRef() 
-    })
-  }
-
-  scrollToTargetRef = () => {
-    window.scrollTo({ behavior: 'smooth', top: this.targetRef.current.offsetTop })
+    this.setState(
+      {
+        selectedService: id,
+      },
+      () => {
+        this.scrollToTargetRef()
+      }
+    )
   }
 
   render() {

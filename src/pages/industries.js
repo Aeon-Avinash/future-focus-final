@@ -77,18 +77,23 @@ class IndustriesPage extends Component {
         selectedIndustry: this.context.industrySelected,
       })
     }
+    this.scrollToTargetRef = () => {
+      window.scrollTo({
+        behavior: "smooth",
+        top: this.targetRef.current.offsetTop,
+      })
+    }
   }
 
   selectIndustry = id => {
-    this.setState({
-      selectedIndustry: id,
-    }, () => {
-      this.scrollToTargetRef()
-    })
-  }
-
-  scrollToTargetRef = () => {
-    window.scrollTo({behavior: 'smooth', top: this.targetRef.current.offsetTop})
+    this.setState(
+      {
+        selectedIndustry: id,
+      },
+      () => {
+        this.scrollToTargetRef()
+      }
+    )
   }
 
   render() {

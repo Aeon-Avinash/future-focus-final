@@ -61,7 +61,7 @@ class ApplyForm extends Component {
       }
     },
     onClose: () => {
-      console.log(`filePicker closed!`)
+      // console.log(`filePicker closed!`)
       if (!this.state.fileUploadComplete) {
         this.setState({
           fileUploadInit: null,
@@ -87,7 +87,7 @@ class ApplyForm extends Component {
             fileUploadMessage: `${uploadedFile.filename} uploaded.`,
           },
           () => {
-            console.log(this.uploadedFileObj)
+            // console.log(this.uploadedFileObj)
           }
         )
       } else {
@@ -98,7 +98,7 @@ class ApplyForm extends Component {
             fileUploadMessage: `File upload failed! Please try again.`,
           },
           () => {
-            console.log(pickerResponse.filesFailed[0])
+            // console.log(pickerResponse.filesFailed[0])
           }
         )
       }
@@ -121,7 +121,7 @@ class ApplyForm extends Component {
 
   submitHandler = values => {
     // e.preventDefault()
-    console.log(values)
+    // console.log(values)
 
     if (
       this.state.name === "" &&
@@ -154,10 +154,10 @@ class ApplyForm extends Component {
                 snackbarMessage: "Error submitting query. Please try again.",
                 snackbarMessageType: "error",
               })
-              console.error(err)
+              // console.error(err)
               return
             }
-            console.log(record.getId())
+            // console.log(record.getId())
             this.setState({
               name: "",
               email: "",
@@ -175,7 +175,7 @@ class ApplyForm extends Component {
           }
         )
       } else if (this.state.fileUploadInit && !this.state.fileUploadComplete) {
-        console.log("File upload in progress...")
+        // console.log("File upload in progress...")
       } else if (!this.state.fileUploadInit && !this.state.fileUploadComplete) {
         base("Contact Records").create(
           {
@@ -193,10 +193,10 @@ class ApplyForm extends Component {
                 snackbarMessage: "Error submitting query. Please try again.",
                 snackbarMessageType: "error",
               })
-              console.error(err)
+              // console.error(err)
               return
             }
-            console.log(record.getId())
+            // console.log(record.getId())
             this.setState({
               name: "",
               email: "",
@@ -215,7 +215,7 @@ class ApplyForm extends Component {
         )
       }
     } else {
-      console.log("Honeypot detected spam attack!")
+      // console.log("Honeypot detected spam attack!")
     }
   }
 
