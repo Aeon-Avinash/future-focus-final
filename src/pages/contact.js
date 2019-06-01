@@ -81,13 +81,12 @@ const ContactPage = ({ data, classes }) => {
           </Grid>
 
           <Grid xs={12} item>
-            <ContactForm />
+            {window ? <ContactForm /> : null}
           </Grid>
 
-          
-            <Grid xs={12} item>
-              <Paper className={classes.paper}>
-                {pageData.blockquote1 ? (
+          <Grid xs={12} item>
+            <Paper className={classes.paper}>
+              {pageData.blockquote1 ? (
                 <Typography
                   variant="h5"
                   component="h2"
@@ -100,8 +99,8 @@ const ContactPage = ({ data, classes }) => {
                     }}
                   />
                 </Typography>
-                ) : null}
-                {pageData.paragraph1 ? (
+              ) : null}
+              {pageData.paragraph1 ? (
                 <Typography
                   variant="h5"
                   component="h2"
@@ -114,10 +113,9 @@ const ContactPage = ({ data, classes }) => {
                     }}
                   />
                 </Typography>
-                ) : null}
-              </Paper>
-            </Grid>
-          
+              ) : null}
+            </Paper>
+          </Grid>
 
           <Grid xs={12} item>
             <Paper className={classes.paperMapGrid}>
