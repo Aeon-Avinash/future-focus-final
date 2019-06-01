@@ -1,6 +1,6 @@
 const path = require(`path`)
 const slugify = require(`slugify`)
-const webpack = require(`webpack`)
+// const webpack = require(`webpack`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -25,7 +25,6 @@ exports.createPages = ({ graphql, actions }) => {
       }
 
       result.data.allContentfulTestBlogPage.edges.forEach(({ node }) => {
-
         createPage({
           path: `/blogs/${slugify(node.title, {
             replacement: "-",
@@ -45,8 +44,8 @@ exports.onCreateWebpackConfig = ({ stage, actions, plugins }) => {
   actions.setWebpackConfig({
     plugins: [
       plugins.define({
-        'global.GENTLY': false
-      })
-    ]
+        "global.GENTLY": false,
+      }),
+    ],
   })
 }
