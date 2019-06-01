@@ -1,5 +1,6 @@
 const path = require(`path`)
 const slugify = require(`slugify`)
+const webpack = require(`webpack`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -38,4 +39,14 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
     .catch(err => console.log(err))
+}
+
+exports.onCreateWebpackConfig = ({ stage, actions, plugins }) => {
+  actions.setWebpackConfig({
+    plugins: [
+      plugins.define({
+        'global.GENTLY': false
+      })
+    ]
+  })
 }
