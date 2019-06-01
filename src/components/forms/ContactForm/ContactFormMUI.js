@@ -221,6 +221,7 @@ class ContactForm extends Component {
     return (
       <div style={{ padding: 0, margin: "0px auto", maxWidth: 600 }}>
         <CssBaseline />
+        {window ? 
         <Form
           onSubmit={this.submitHandler}
           validate={values => {
@@ -417,6 +418,7 @@ class ContactForm extends Component {
             </form>
           )}
         />
+          : <span>Loading...</span>}
         {this.state.openSnackbar ? (
           <SnackbarFF
             openSnackbar={this.state.openSnackbar}
