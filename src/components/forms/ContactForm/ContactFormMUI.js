@@ -1,11 +1,9 @@
 import React, { Component } from "react"
 import { Form, Field } from "react-final-form"
 import Airtable from "airtable"
-
+// import { TextField } from "final-form-material-ui"
 import * as filestack from "filestack-js"
-if (typeof window !== 'undefined') {
-  import { TextField } from "final-form-material-ui"
-}
+
 import {
   Typography,
   Paper,
@@ -14,7 +12,6 @@ import {
   CssBaseline,
   FormLabel,
   FormGroup,
-  // FormControl,
   FormControlLabel,
 } from "@material-ui/core"
 
@@ -44,6 +41,16 @@ class ContactForm extends Component {
       snackbarMessageType: "default",
     }
     this.fileInput = React.createRef()
+  }
+
+  componentDidMount() {
+    if (typeof window !== "undefined") {
+      import("final-form-material-ui").then(({ TextField }) => {
+        this.setState({
+          TextField
+        })
+      })
+    }
   }
 
   uploadedFileObj = {}
@@ -209,6 +216,8 @@ class ContactForm extends Component {
   }
 
   render() {
+    const {TextField} = this.state
+
     const ohnohoney = {
       opacity: 0,
       position: "absolute",
@@ -219,10 +228,10 @@ class ContactForm extends Component {
       zIndex: -1,
     }
 
-    return typeof window !== "undefined" ? (
+    return (
       <div style={{ padding: 0, margin: "0px auto", maxWidth: 600 }}>
         <CssBaseline />
-        {typeof window !== "undefined" ? (
+        {(typeof window !== 'undefined') && TextField ? (
           <Form
             onSubmit={this.submitHandler}
             validate={values => {
@@ -263,167 +272,164 @@ class ContactForm extends Component {
                   alignItems: "space-evenly",
                 }}
               >
-                  {typeof window !== 'undefined' ? 
-                <Paper style={{ padding: 16 }}>
-                  <Grid container alignItems="flex-start" spacing={4}>
-                    <Grid item xs={12}>
-                      <Field
-                        name="nameairgats"
-                        fullWidth
-                        required
-                        component={TextField}
-                        type="text"
-                        label="Name"
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Field
-                        name="emailairgats"
-                        fullWidth
-                        required
-                        component={TextField}
-                        type="text"
-                        label="Email"
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Field
-                        name="notesairgats"
-                        fullWidth
-                        multiline
-                        rowsMax="4"
-                        component={TextField}
-                        type="text"
-                        label="Notes"
-                      />
-                    </Grid>
+                
+                  <Paper style={{ padding: 16 }}>
+                    <Grid container alignItems="flex-start" spacing={4}>
+                      <Grid item xs={12}>
+                        <Field
+                          name="nameairgats"
+                          fullWidth
+                          required
+                          component={TextField}
+                          type="text"
+                          label="Name"
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Field
+                          name="emailairgats"
+                          fullWidth
+                          required
+                          component={TextField}
+                          type="text"
+                          label="Email"
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Field
+                          name="notesairgats"
+                          fullWidth
+                          multiline
+                          rowsMax="4"
+                          component={TextField}
+                          type="text"
+                          label="Notes"
+                        />
+                      </Grid>
 
-                    <Grid item xs={12}>
-                      <FormGroup>
-                        <FormLabel
-                          component="legend"
-                          style={{ margin: "12px 0 0 0" }}
-                        >
-                          File Upload
-                        </FormLabel>
-                        <FormControlLabel
-                          control={
-                            <React.Fragment>
-                              <Button
-                                type="button"
-                                variant="contained"
-                                id="filestackairgats"
-                                onClick={this.fileUploadHandler}
-                                style={{ margin: "12px 0 0 14px" }}
+                      <Grid item xs={12}>
+                        <FormGroup>
+                          <FormLabel
+                            component="legend"
+                            style={{ margin: "12px 0 0 0" }}
+                          >
+                            File Upload
+                          </FormLabel>
+                          <FormControlLabel
+                            control={
+                              <React.Fragment>
+                                <Button
+                                  type="button"
+                                  variant="contained"
+                                  id="filestackairgats"
+                                  onClick={this.fileUploadHandler}
+                                  style={{ margin: "12px 0 0 14px" }}
+                                >
+                                  {this.state.fileUploadComplete
+                                    ? "Change File"
+                                    : "Select File"}
+                                </Button>{" "}
+                              </React.Fragment>
+                            }
+                          />
+                          <FormControlLabel
+                            control={
+                              <Typography
+                                variant="caption"
+                                align="center"
+                                component="h2"
+                                gutterBottom
+                                style={{
+                                  margin: "12px 0 0 14px",
+                                }}
+                                color={
+                                  this.state.fileUploadComplete
+                                    ? "primary"
+                                    : "error"
+                                }
                               >
-                                {this.state.fileUploadComplete
-                                  ? "Change File"
-                                  : "Select File"}
-                              </Button>{" "}
-                            </React.Fragment>
-                          }
-                        />
-                        <FormControlLabel
-                          control={
-                            <Typography
-                              variant="caption"
-                              align="center"
-                              component="h2"
-                              gutterBottom
-                              style={{
-                                margin: "12px 0 0 14px",
-                              }}
-                              color={
-                                this.state.fileUploadComplete
-                                  ? "primary"
-                                  : "error"
-                              }
-                            >
-                              {this.state.fileUploadMessage}
-                            </Typography>
-                          }
-                        />
-                      </FormGroup>
-                    </Grid>
+                                {this.state.fileUploadMessage}
+                              </Typography>
+                            }
+                          />
+                        </FormGroup>
+                      </Grid>
 
-                    <label style={ohnohoney} htmlFor="name">
-                      Name &nbsp;&nbsp;
-                      <input
-                        style={ohnohoney}
-                        type="text"
-                        name="name"
-                        id="name"
-                        placeholder="Your name here"
-                        autoComplete="off"
-                        onChange={this.changeHandler}
-                        value={this.state.name}
-                      />
-                    </label>
-                    <label style={ohnohoney} htmlFor="email">
-                      Email &nbsp;&nbsp;
-                      <input
-                        style={ohnohoney}
-                        type="text"
-                        name="email"
-                        id="email"
-                        placeholder="Your e-mail here"
-                        autoComplete="off"
-                        onChange={this.changeHandler}
-                        value={this.state.email}
-                      />
-                    </label>
-                    <label style={ohnohoney} htmlFor="notes">
-                      Notes &nbsp;&nbsp;
-                      <textarea
-                        style={ohnohoney}
-                        name="notes"
-                        id="notes"
-                        placeholder="Your notes here"
-                        autoComplete="off"
-                        onChange={this.changeHandler}
-                        value={this.state.notes}
-                      />
-                    </label>
-                    <label style={ohnohoney} htmlFor="file">
-                      File &nbsp;&nbsp;
-                      <input
-                        style={ohnohoney}
-                        type="file"
-                        name="file"
-                        id="file"
-                        ref={this.fileInput}
-                      />
-                    </label>
+                      <label style={ohnohoney} htmlFor="name">
+                        Name &nbsp;&nbsp;
+                        <input
+                          style={ohnohoney}
+                          type="text"
+                          name="name"
+                          id="name"
+                          placeholder="Your name here"
+                          autoComplete="off"
+                          onChange={this.changeHandler}
+                          value={this.state.name}
+                        />
+                      </label>
+                      <label style={ohnohoney} htmlFor="email">
+                        Email &nbsp;&nbsp;
+                        <input
+                          style={ohnohoney}
+                          type="text"
+                          name="email"
+                          id="email"
+                          placeholder="Your e-mail here"
+                          autoComplete="off"
+                          onChange={this.changeHandler}
+                          value={this.state.email}
+                        />
+                      </label>
+                      <label style={ohnohoney} htmlFor="notes">
+                        Notes &nbsp;&nbsp;
+                        <textarea
+                          style={ohnohoney}
+                          name="notes"
+                          id="notes"
+                          placeholder="Your notes here"
+                          autoComplete="off"
+                          onChange={this.changeHandler}
+                          value={this.state.notes}
+                        />
+                      </label>
+                      <label style={ohnohoney} htmlFor="file">
+                        File &nbsp;&nbsp;
+                        <input
+                          style={ohnohoney}
+                          type="file"
+                          name="file"
+                          id="file"
+                          ref={this.fileInput}
+                        />
+                      </label>
 
-                    <Grid item style={{ marginTop: 16 }}>
-                      <Button
-                        type="button"
-                        variant="contained"
-                        onClick={form.reset}
-                        disabled={submitting || pristine}
-                      >
-                        Reset
-                      </Button>
+                      <Grid item style={{ marginTop: 16 }}>
+                        <Button
+                          type="button"
+                          variant="contained"
+                          onClick={form.reset}
+                          disabled={submitting || pristine}
+                        >
+                          Reset
+                        </Button>
+                      </Grid>
+                      <Grid item style={{ marginTop: 16 }}>
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          color="primary"
+                          disabled={submitting || pristine || invalid}
+                        >
+                          Submit
+                        </Button>
+                      </Grid>
                     </Grid>
-                    <Grid item style={{ marginTop: 16 }}>
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        disabled={submitting || pristine || invalid}
-                      >
-                        Submit
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </Paper>
-                : null}
+                  </Paper>
               </form>
             )}
-          />
-        ) : (
-          <span>Loading...</span>
-        )}
+          />)
+          : (<span>Loading...</span>)}
         {this.state.openSnackbar ? (
           <SnackbarFF
             openSnackbar={this.state.openSnackbar}
@@ -432,7 +438,8 @@ class ContactForm extends Component {
             snackbarClosed={this.handleSnackbarClosed}
           />
         ) : null}
-      </div>) : null
+      </div>
+    )
   }
 }
 

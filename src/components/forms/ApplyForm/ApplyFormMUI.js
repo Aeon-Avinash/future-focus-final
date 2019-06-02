@@ -1,12 +1,8 @@
 import React, { Component } from "react"
-// import { render } from "react-dom"
 import { Form, Field } from "react-final-form"
 import Airtable from "airtable"
-
+// import { TextField, Select } from "final-form-material-ui"
 import * as filestack from "filestack-js"
-if (typeof window !== 'undefined') {
-  import { TextField, Select } from "final-form-material-ui"
-}
 import {
   Typography,
   Paper,
@@ -16,7 +12,6 @@ import {
   CssBaseline,
   FormLabel,
   FormGroup,
-  // FormControl,
   FormControlLabel,
 } from "@material-ui/core"
 
@@ -49,6 +44,17 @@ class ApplyForm extends Component {
       snackbarMessageType: "default",
     }
     this.fileInput = React.createRef()
+  }
+
+  componentDidMount() {
+    if (typeof window !== "undefined") {
+      import("final-form-material-ui").then(({ TextField, Select }) => {
+        this.setState({
+          TextField,
+          Select
+        })
+      })
+    }
   }
 
   uploadedFileObj = {}
@@ -229,6 +235,8 @@ class ApplyForm extends Component {
   }
 
   render() {
+    const {TextField, Select} = this.state
+
     const ohnohoney = {
       opacity: 0,
       position: "absolute",
@@ -239,10 +247,10 @@ class ApplyForm extends Component {
       zIndex: -1,
     }
 
-    return typeof window !== "undefined" ? (
+    return (
       <div style={{ padding: 0, margin: "0px auto", maxWidth: 600 }}>
         <CssBaseline />
-        { typeof window !== 'undefined' ? 
+        {(typeof window !== 'undefined') && TextField && Select ? (
         <Form
           onSubmit={this.submitHandler}
           validate={values => {
@@ -292,7 +300,7 @@ class ApplyForm extends Component {
                 alignItems: "space-evenly",
               }}
             >
-            {typeof window !== 'undefined' ?
+            
               <Paper style={{ padding: 16 }}>
                 <Grid container alignItems="flex-start" spacing={4}>
                   <Grid item xs={12}>
@@ -581,11 +589,10 @@ class ApplyForm extends Component {
                   </Grid>
                 </Grid>
               </Paper>
-              : null}
             </form>
           )}
-        />
-        : <span>Loading...</span>}
+        />)
+        : (<span>Loading...</span>)}
         {this.state.openSnackbar ? (
           <SnackbarFF
             openSnackbar={this.state.openSnackbar}
@@ -594,7 +601,7 @@ class ApplyForm extends Component {
             snackbarClosed={this.handleSnackbarClosed}
           />
         ) : null}
-      </div>) : null
+      </div>)
   }
 }
 
