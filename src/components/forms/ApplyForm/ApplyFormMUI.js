@@ -17,14 +17,14 @@ import {
 
 import SnackbarFF from "../Snackbar/Snackbar"
 
-const FILESTACK_API_KEY =
-  process.env.FILESTACK_API_KEY || process.env.GATSBY_FILESTACK_API_KEY
+const FILESTACK_API_KEY_2 =
+  process.env.FILESTACK_API_KEY_2 || process.env.GATSBY_FILESTACK_API_KEY_2
 const AIRTABLE_API_KEY =
   process.env.AIRTABLE_API_KEY || process.env.GATSBY_AIRTABLE_API_KEY
 const FF_APPLY_BASE_ID =
   process.env.FF_APPLY_BASE_ID || process.env.GATSBY_FF_APPLY_BASE_ID
 
-const client = filestack.init(FILESTACK_API_KEY)
+const client = filestack.init(FILESTACK_API_KEY_2)
 
 class ApplyForm extends Component {
   constructor(props) {
