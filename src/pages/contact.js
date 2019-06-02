@@ -81,7 +81,7 @@ const ContactPage = ({ data, classes }) => {
           </Grid>
 
           <Grid xs={12} item>
-            {window ? <ContactForm /> : null}
+            {(typeof window !== 'undefined') ? <ContactForm /> : null}
           </Grid>
 
           <Grid xs={12} item>
@@ -135,7 +135,7 @@ const ContactPage = ({ data, classes }) => {
                 </Typography>
               ) : null}
               <Paper className={classes.paperGoogleMap}>
-                <GoogleMap google={window.google} />
+                {(typeof window !== 'undefined') ? <GoogleMap google={window.google} /> : null}
               </Paper>
             </Paper>
           </Grid>

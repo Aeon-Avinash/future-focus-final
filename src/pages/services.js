@@ -79,7 +79,7 @@ class ServicesPage extends Component {
   }
 
   scrollToTargetRef = () => {
-    if (window) {
+    if (typeof window !== "undefined") {
       window.scrollTo({
         behavior: "smooth",
         top: this.targetRef.current.offsetTop,

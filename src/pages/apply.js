@@ -111,7 +111,7 @@ const ApplyPage = ({ data, classes }) => {
           </Grid>
 
           <Grid xs={12} item>
-            {window ? <ApplyForm /> : null}
+            {(typeof window !== 'undefined') ? <ApplyForm /> : null}
           </Grid>
         </Grid>
       </Container>
