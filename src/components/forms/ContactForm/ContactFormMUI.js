@@ -3,8 +3,9 @@ import { Form, Field } from "react-final-form"
 import Airtable from "airtable"
 
 import * as filestack from "filestack-js"
-
-import { TextField } from "final-form-material-ui"
+if (typeof window !== 'undefined') {
+  import { TextField } from "final-form-material-ui"
+}
 import {
   Typography,
   Paper,
@@ -218,7 +219,7 @@ class ContactForm extends Component {
       zIndex: -1,
     }
 
-    return (
+    return typeof window !== "undefined" ? (
       <div style={{ padding: 0, margin: "0px auto", maxWidth: 600 }}>
         <CssBaseline />
         {typeof window !== "undefined" ? (
@@ -431,8 +432,7 @@ class ContactForm extends Component {
             snackbarClosed={this.handleSnackbarClosed}
           />
         ) : null}
-      </div>
-    )
+      </div>) : null
   }
 }
 
