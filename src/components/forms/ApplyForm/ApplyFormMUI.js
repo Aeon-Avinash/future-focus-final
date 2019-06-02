@@ -241,7 +241,7 @@ class ApplyForm extends Component {
     return (
       <div style={{ padding: 0, margin: "0px auto", maxWidth: 600 }}>
         <CssBaseline />
-        { window ? 
+        { typeof window !== 'undefined' ? 
         <Form
           onSubmit={this.submitHandler}
           validate={values => {

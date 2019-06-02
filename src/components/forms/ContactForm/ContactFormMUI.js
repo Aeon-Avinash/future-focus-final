@@ -221,204 +221,206 @@ class ContactForm extends Component {
     return (
       <div style={{ padding: 0, margin: "0px auto", maxWidth: 600 }}>
         <CssBaseline />
-        {window ? 
-        <Form
-          onSubmit={this.submitHandler}
-          validate={values => {
-            const errors = {}
-            if (!values.nameairgats) {
-              errors.nameairgats = "Required"
-            }
-            if (!values.emailairgats) {
-              errors.emailairgats = "Required"
-            } else if (
-              !/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i.test(
-                values.emailairgats
-              )
-            ) {
-              errors.emailairgats = "Invalid E-mail"
-            }
-            return errors
-          }}
-          render={({
-            handleSubmit,
-            form,
-            reset,
-            submitting,
-            pristine,
-            values,
-            invalid,
-          }) => (
-            <form
-              onSubmit={async event => {
-                await handleSubmit(event)
-                form.reset()
-              }}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                margin: "50px auto",
-                justifyContent: "center",
-                alignItems: "space-evenly",
-              }}
-            >
-              <Paper style={{ padding: 16 }}>
-                <Grid container alignItems="flex-start" spacing={4}>
-                  <Grid item xs={12}>
-                    <Field
-                      name="nameairgats"
-                      fullWidth
-                      required
-                      component={TextField}
-                      type="text"
-                      label="Name"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Field
-                      name="emailairgats"
-                      fullWidth
-                      required
-                      component={TextField}
-                      type="text"
-                      label="Email"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Field
-                      name="notesairgats"
-                      fullWidth
-                      multiline
-                      rowsMax="4"
-                      component={TextField}
-                      type="text"
-                      label="Notes"
-                    />
-                  </Grid>
+        {typeof window !== "undefined" ? (
+          <Form
+            onSubmit={this.submitHandler}
+            validate={values => {
+              const errors = {}
+              if (!values.nameairgats) {
+                errors.nameairgats = "Required"
+              }
+              if (!values.emailairgats) {
+                errors.emailairgats = "Required"
+              } else if (
+                !/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i.test(
+                  values.emailairgats
+                )
+              ) {
+                errors.emailairgats = "Invalid E-mail"
+              }
+              return errors
+            }}
+            render={({
+              handleSubmit,
+              form,
+              reset,
+              submitting,
+              pristine,
+              values,
+              invalid,
+            }) => (
+              <form
+                onSubmit={async event => {
+                  await handleSubmit(event)
+                  form.reset()
+                }}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  margin: "50px auto",
+                  justifyContent: "center",
+                  alignItems: "space-evenly",
+                }}
+              >
+                <Paper style={{ padding: 16 }}>
+                  <Grid container alignItems="flex-start" spacing={4}>
+                    <Grid item xs={12}>
+                      <Field
+                        name="nameairgats"
+                        fullWidth
+                        required
+                        component={TextField}
+                        type="text"
+                        label="Name"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Field
+                        name="emailairgats"
+                        fullWidth
+                        required
+                        component={TextField}
+                        type="text"
+                        label="Email"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Field
+                        name="notesairgats"
+                        fullWidth
+                        multiline
+                        rowsMax="4"
+                        component={TextField}
+                        type="text"
+                        label="Notes"
+                      />
+                    </Grid>
 
-                  <Grid item xs={12}>
-                    <FormGroup>
-                      <FormLabel
-                        component="legend"
-                        style={{ margin: "12px 0 0 0" }}
-                      >
-                        File Upload
-                      </FormLabel>
-                      <FormControlLabel
-                        control={
-                          <React.Fragment>
-                            <Button
-                              type="button"
-                              variant="contained"
-                              id="filestackairgats"
-                              onClick={this.fileUploadHandler}
-                              style={{ margin: "12px 0 0 14px" }}
+                    <Grid item xs={12}>
+                      <FormGroup>
+                        <FormLabel
+                          component="legend"
+                          style={{ margin: "12px 0 0 0" }}
+                        >
+                          File Upload
+                        </FormLabel>
+                        <FormControlLabel
+                          control={
+                            <React.Fragment>
+                              <Button
+                                type="button"
+                                variant="contained"
+                                id="filestackairgats"
+                                onClick={this.fileUploadHandler}
+                                style={{ margin: "12px 0 0 14px" }}
+                              >
+                                {this.state.fileUploadComplete
+                                  ? "Change File"
+                                  : "Select File"}
+                              </Button>{" "}
+                            </React.Fragment>
+                          }
+                        />
+                        <FormControlLabel
+                          control={
+                            <Typography
+                              variant="caption"
+                              align="center"
+                              component="h2"
+                              gutterBottom
+                              style={{
+                                margin: "12px 0 0 14px",
+                              }}
+                              color={
+                                this.state.fileUploadComplete
+                                  ? "primary"
+                                  : "error"
+                              }
                             >
-                              {this.state.fileUploadComplete
-                                ? "Change File"
-                                : "Select File"}
-                            </Button>{" "}
-                          </React.Fragment>
-                        }
-                      />
-                      <FormControlLabel
-                        control={
-                          <Typography
-                            variant="caption"
-                            align="center"
-                            component="h2"
-                            gutterBottom
-                            style={{
-                              margin: "12px 0 0 14px",
-                            }}
-                            color={
-                              this.state.fileUploadComplete
-                                ? "primary"
-                                : "error"
-                            }
-                          >
-                            {this.state.fileUploadMessage}
-                          </Typography>
-                        }
-                      />
-                    </FormGroup>
-                  </Grid>
+                              {this.state.fileUploadMessage}
+                            </Typography>
+                          }
+                        />
+                      </FormGroup>
+                    </Grid>
 
-                  <label style={ohnohoney} htmlFor="name">
-                    Name &nbsp;&nbsp;
-                    <input
-                      style={ohnohoney}
-                      type="text"
-                      name="name"
-                      id="name"
-                      placeholder="Your name here"
-                      autoComplete="off"
-                      onChange={this.changeHandler}
-                      value={this.state.name}
-                    />
-                  </label>
-                  <label style={ohnohoney} htmlFor="email">
-                    Email &nbsp;&nbsp;
-                    <input
-                      style={ohnohoney}
-                      type="text"
-                      name="email"
-                      id="email"
-                      placeholder="Your e-mail here"
-                      autoComplete="off"
-                      onChange={this.changeHandler}
-                      value={this.state.email}
-                    />
-                  </label>
-                  <label style={ohnohoney} htmlFor="notes">
-                    Notes &nbsp;&nbsp;
-                    <textarea
-                      style={ohnohoney}
-                      name="notes"
-                      id="notes"
-                      placeholder="Your notes here"
-                      autoComplete="off"
-                      onChange={this.changeHandler}
-                      value={this.state.notes}
-                    />
-                  </label>
-                  <label style={ohnohoney} htmlFor="file">
-                    File &nbsp;&nbsp;
-                    <input
-                      style={ohnohoney}
-                      type="file"
-                      name="file"
-                      id="file"
-                      ref={this.fileInput}
-                    />
-                  </label>
+                    <label style={ohnohoney} htmlFor="name">
+                      Name &nbsp;&nbsp;
+                      <input
+                        style={ohnohoney}
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Your name here"
+                        autoComplete="off"
+                        onChange={this.changeHandler}
+                        value={this.state.name}
+                      />
+                    </label>
+                    <label style={ohnohoney} htmlFor="email">
+                      Email &nbsp;&nbsp;
+                      <input
+                        style={ohnohoney}
+                        type="text"
+                        name="email"
+                        id="email"
+                        placeholder="Your e-mail here"
+                        autoComplete="off"
+                        onChange={this.changeHandler}
+                        value={this.state.email}
+                      />
+                    </label>
+                    <label style={ohnohoney} htmlFor="notes">
+                      Notes &nbsp;&nbsp;
+                      <textarea
+                        style={ohnohoney}
+                        name="notes"
+                        id="notes"
+                        placeholder="Your notes here"
+                        autoComplete="off"
+                        onChange={this.changeHandler}
+                        value={this.state.notes}
+                      />
+                    </label>
+                    <label style={ohnohoney} htmlFor="file">
+                      File &nbsp;&nbsp;
+                      <input
+                        style={ohnohoney}
+                        type="file"
+                        name="file"
+                        id="file"
+                        ref={this.fileInput}
+                      />
+                    </label>
 
-                  <Grid item style={{ marginTop: 16 }}>
-                    <Button
-                      type="button"
-                      variant="contained"
-                      onClick={form.reset}
-                      disabled={submitting || pristine}
-                    >
-                      Reset
-                    </Button>
+                    <Grid item style={{ marginTop: 16 }}>
+                      <Button
+                        type="button"
+                        variant="contained"
+                        onClick={form.reset}
+                        disabled={submitting || pristine}
+                      >
+                        Reset
+                      </Button>
+                    </Grid>
+                    <Grid item style={{ marginTop: 16 }}>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        disabled={submitting || pristine || invalid}
+                      >
+                        Submit
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item style={{ marginTop: 16 }}>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                      disabled={submitting || pristine || invalid}
-                    >
-                      Submit
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Paper>
-            </form>
-          )}
-        />
-          : <span>Loading...</span>}
+                </Paper>
+              </form>
+            )}
+          />
+        ) : (
+          <span>Loading...</span>
+        )}
         {this.state.openSnackbar ? (
           <SnackbarFF
             openSnackbar={this.state.openSnackbar}
