@@ -291,6 +291,7 @@ class ApplyForm extends Component {
                 alignItems: "space-evenly",
               }}
             >
+            {typeof window !== 'undefined' ?
               <Paper style={{ padding: 16 }}>
                 <Grid container alignItems="flex-start" spacing={4}>
                   <Grid item xs={12}>
@@ -579,6 +580,7 @@ class ApplyForm extends Component {
                   </Grid>
                 </Grid>
               </Paper>
+              : null}
             </form>
           )}
         />

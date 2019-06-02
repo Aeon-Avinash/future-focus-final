@@ -262,6 +262,7 @@ class ContactForm extends Component {
                   alignItems: "space-evenly",
                 }}
               >
+                  {typeof window !== 'undefined' ? 
                 <Paper style={{ padding: 16 }}>
                   <Grid container alignItems="flex-start" spacing={4}>
                     <Grid item xs={12}>
@@ -415,6 +416,7 @@ class ContactForm extends Component {
                     </Grid>
                   </Grid>
                 </Paper>
+                : null}
               </form>
             )}
           />
