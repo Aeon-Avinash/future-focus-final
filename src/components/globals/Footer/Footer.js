@@ -1,49 +1,56 @@
 import React from "react"
-import { withStyles } from "@material-ui/core/styles"
+// import { makeStyles } from "@material-ui/core/styles"
 import { Typography, Grid, Paper, Link as MUILink } from "@material-ui/core"
 
 import FooterSiteLinks from "../FooterItems/FooterSiteLinks"
 import FooterSocialLinks from "../FooterItems/FooterSocialLinks"
 
-const styles = theme => ({
-  footerPaper: {
-    padding: 1 * theme.spacing(2),
-    margin: "auto",
-    height: "auto",
-    [theme.breakpoints.up("md")]: {
-      height: "auto",
-      width: "66%",
-    },
-    [theme.breakpoints.down("md")]: {
-      height: "auto",
-      width: "100%",
-    },
-  },
-  footerContentDiv: {
-    display: "flex",
-    justifyContent: "space-evenly",
-    margin: "5px auto",
-  },
-  // outLinksDiv: {
-  //   textAlign: "center",
-  // },
-})
+// const useStyles = makeStyles(theme => ({
+//   footerPaper: {
+//     padding: 1 * theme.spacing(2),
+//     margin: "auto",
+//     height: "auto",
+//     [theme.breakpoints.up("md")]: {
+//       height: "auto",
+//       width: "66%",
+//     },
+//     [theme.breakpoints.down("md")]: {
+//       height: "auto",
+//       width: "100%",
+//     },
+//   },
+//   footerContentDiv: {
+//     display: "flex",
+//     justifyContent: "space-evenly",
+//     margin: "5px auto",
+//   },
+//   outLinksDiv: {
+//     textAlign: "center",
+//   },
+// }))
 
-const Footer = ({ classes }) => {
+const footerContentDivStyles = {
+  display: "flex",
+  justifyContent: "space-evenly",
+  margin: "5px auto",
+}
+
+const Footer = () => {
+  // const classes = useStyles()
   return (
-    <Paper className={classes.footerPaper}>
+    <Paper style={{padding: "16px"}}>
       <Grid container alignItems="center">
-        <Grid xs={12} md={9} item className={classes.footerContentDiv}>
+        <Grid xs={12} md={9} item style={footerContentDivStyles}>
           <FooterSiteLinks />
         </Grid>
-        <Grid xs={12} md={9} item className={classes.footerContentDiv}>
+        <Grid xs={12} md={9} item style={footerContentDivStyles}>
           <FooterSocialLinks />
         </Grid>
-        <Grid xs={12} md={9} item className={classes.footerContentDiv}>
+        <Grid xs={12} md={9} item style={footerContentDivStyles}>
           <Typography
             variant="body2"
             gutterBottom
-            className={classes.outLinksDiv}
+            style={{ textAlign: "center"}}
           >
             © {new Date().getFullYear()}
             {`, `}
@@ -83,4 +90,4 @@ Footer.defaultProps = {
   siteTitle: `FutureFocus`,
 }
 
-export default withStyles(styles)(Footer)
+export default Footer

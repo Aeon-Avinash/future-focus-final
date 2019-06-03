@@ -9,9 +9,9 @@ const renderNavItems = allPages => {
       key={link.id}
       variant={link.pageUrl === "/apply/" ? "outlined" : "text"}
     >
-      <Link 
-        to={link.pageUrl} 
-        activeStyle 
+      <Link
+        to={link.pageUrl}
+        activeStyle
         partiallyActive={link.pageUrl === "/blog/" ? true : false}
       >
         {link.pageName}

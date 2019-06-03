@@ -9,6 +9,7 @@ const MyLink = props => {
   const renderLink = itemProps => (
     <RouterLink
       to={props.to}
+      href={props.to}
       activeStyle={
         props.activeStyle
           ? { borderBottom: `solid 0.25rem ${theme.palette.secondary.main}` }
