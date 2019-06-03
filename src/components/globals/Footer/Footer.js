@@ -24,6 +24,9 @@ const styles = theme => ({
     justifyContent: "space-evenly",
     margin: "5px auto",
   },
+  outLinksDiv: {
+    textAlign: "center",
+  },
 })
 
 const Footer = ({ classes }) => {
@@ -37,7 +40,11 @@ const Footer = ({ classes }) => {
           <FooterSocialLinks />
         </Grid>
         <Grid xs={12} md={9} item className={classes.footerContentDiv}>
-          <Typography variant="body2" gutterBottom>
+          <Typography
+            variant="body2"
+            gutterBottom
+            className={classes.outLinksDiv}
+          >
             © {new Date().getFullYear()}
             {`, `}
             <MUILink
@@ -56,7 +63,7 @@ const Footer = ({ classes }) => {
             >
               Gatsby
             </MUILink>
-            {`, by`}
+            {`, developed by`}
             {` `}
             <MUILink
               href="https://github.com/Aeon-Avinash"

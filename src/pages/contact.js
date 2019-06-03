@@ -31,6 +31,14 @@ const styles = theme => ({
   paper: {
     padding: 2 * theme.spacing(2),
   },
+  paperContactGrid: {
+    [theme.breakpoints.down("sm")]: {
+      padding: `${2 * theme.spacing(2)}px ${1 * theme.spacing(2)}px`,
+    },
+    [theme.breakpoints.up("sm")]: {
+      padding: 2 * theme.spacing(2),
+    },
+  },
   paperMapGrid: {
     display: "flex",
     [theme.breakpoints.down("md")]: {
@@ -47,7 +55,11 @@ const styles = theme => ({
     },
   },
   paperGoogleMap: {
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
+      width: "76vw",
+      height: "40vh",
+    },
+    [theme.breakpoints.between("sm", "md")]: {
       width: "86vw",
       height: "40vh",
     },
@@ -63,7 +75,7 @@ const ContactPage = ({ data, classes }) => {
   return (
     <>
       {pageData.pageName ? <SEO title={`${pageData.pageName} Page`} /> : null}
-      <Container maxWidth={"lg"} className={""}>
+      <Container maxWidth={"lg"}>
         <Grid container spacing={2} className={classes.containerGrid}>
           <Grid xs={12} item>
             <Paper className={classes.paper}>
@@ -81,11 +93,11 @@ const ContactPage = ({ data, classes }) => {
           </Grid>
 
           <Grid xs={12} item>
-            {(typeof window !== 'undefined') ? <ContactForm /> : null}
+            {typeof window !== "undefined" ? <ContactForm /> : null}
           </Grid>
 
           <Grid xs={12} item>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paperContactGrid}>
               {pageData.blockquote1 ? (
                 <Typography
                   variant="h5"
@@ -135,7 +147,9 @@ const ContactPage = ({ data, classes }) => {
                 </Typography>
               ) : null}
               <Paper className={classes.paperGoogleMap}>
-                {(typeof window !== 'undefined') ? <GoogleMap google={window.google} /> : null}
+                {(typeof window !== "undefined") && pageData.paragraph1 ? (
+                  <GoogleMap google={window.google} contactInfo={pageData.paragraph1.childMarkdownRemark.html}/>
+                ) : null}
               </Paper>
             </Paper>
           </Grid>

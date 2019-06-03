@@ -1,16 +1,12 @@
 import indigo from "@material-ui/core/colors/indigo"
+import amber from "@material-ui/core/colors/amber"
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
 
 // A custom theme for this app
 let theme = createMuiTheme({
   palette: {
     primary: indigo,
-    // {
-    //   main: "#3f51b5",
-    // },
-    secondary: {
-      main: "#ffc400",
-    },
+    secondary: amber,
     error: {
       main: "#ff1744",
     },

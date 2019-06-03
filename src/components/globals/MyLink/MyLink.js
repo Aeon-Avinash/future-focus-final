@@ -1,11 +1,27 @@
-import React, { Component } from "react"
+import React from "react"
 import { Link as RouterLink } from "gatsby"
 import { Link } from "@material-ui/core"
+import { useTheme } from "@material-ui/styles"
 
-export default class MyLink extends Component {
-  renderLink = itemProps => <RouterLink to={this.props.to} {...itemProps} />
+const MyLink = props => {
+  const theme = useTheme()
 
-  render() {
-    return <Link component={this.renderLink}>{this.props.children}</Link>
-  }
+  const renderLink = itemProps => (
+    <RouterLink
+      to={props.to}
+      activeStyle={
+        props.activeStyle
+          ? { borderBottom: `solid 0.25rem ${theme.palette.secondary.main}` }
+          : null
+      }
+      partiallyActive={
+        props.activeStyle && props.partiallyActive ? true : false
+      }
+      {...itemProps}
+    />
+  )
+
+  return <Link component={renderLink}>{props.children}</Link>
 }
+
+export default MyLink

@@ -3,6 +3,8 @@ import { useTheme } from "@material-ui/core/styles"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react"
 
+import FFLogo from "../../images/ff-icon.svg"
+
 const GOOGLE_MAPS_JS_API_KEY =
   process.env.GOOGLE_MAPS_JS_API_KEY ||
   process.env.GATSBY_GOOGLE_MAPS_JS_API_KEY
@@ -11,7 +13,9 @@ const GoogleMap = props => {
   const [showInfoWindow, setShowInfoWindow] = useState(false)
   const [activeMarker, setActiveMarker] = useState({})
   const theme = useTheme()
-  const mdMediaWidth = useMediaQuery(theme.breakpoints.up("md"))
+
+  const md_sm_MediaWidth = useMediaQuery(theme.breakpoints.between("sm", "md"))
+  const up_md_MediaWidth = useMediaQuery(theme.breakpoints.up("md"))
 
   const mapStyles = {
     width: "100%",
@@ -19,24 +23,13 @@ const GoogleMap = props => {
   }
 
   const containerStyles = {
-    width: mdMediaWidth ? "600px" : "88%",
-    height: mdMediaWidth ? "500px" : "40%",
-    position: mdMediaWidth ? "relative" : "absolute",
+    width: up_md_MediaWidth ? "600px" : md_sm_MediaWidth ? "88%" : "80%",
+    height: up_md_MediaWidth ? "500px" : "40%",
+    position: up_md_MediaWidth ? "relative" : "absolute",
   }
 
   const markerContent = (
-    <div>
-      <h2>Future Focus Services</h2>
-      <h4 style={{ marginTop: 0, paddingTop: 0 }}>
-        Recruitment and Training Desk
-      </h4>
-      <p style={{ margin: 0, padding: 0 }}>
-        2nd Floor, Pratima Complex, Opp. Bharat Petrol Pump
-      </p>
-      <p style={{ margin: 0, padding: 0 }}>
-        Kachery Road, Uditnagar, Rourkela, Odissa
-      </p>
-    </div>
+    <div dangerouslySetInnerHTML={{ __html: props.contactInfo }} />
   )
 
   const markerClickHandler = (props, marker, e) => {
@@ -51,9 +44,11 @@ const GoogleMap = props => {
     }
   }
 
+  const { google } = props
+
   return (
     <Map
-      google={props.google}
+      google={google}
       zoom={16}
       style={mapStyles}
       containerStyle={containerStyles}
@@ -62,7 +57,12 @@ const GoogleMap = props => {
     >
       <Marker
         position={{ lat: 22.2266, lng: 84.8443 }}
-        label={`FF`}
+        // label={`FF`}
+        icon={{
+          url: FFLogo,
+          anchor: new google.maps.Point(32, 32),
+          scaledSize: new google.maps.Size(48, 48),
+        }}
         name={"Future Focus HR Services"}
         title="Future Focus HR Services"
         onClick={markerClickHandler}

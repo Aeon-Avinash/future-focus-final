@@ -26,7 +26,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       result.data.allContentfulTestBlogPage.edges.forEach(({ node }) => {
         createPage({
-          path: `/blogs/${slugify(node.title, {
+          path: `/blog/${slugify(node.title, {
             replacement: "-",
             lower: true,
           })}`,

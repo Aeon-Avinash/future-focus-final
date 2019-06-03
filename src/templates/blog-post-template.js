@@ -164,7 +164,7 @@ const BlogTemplate = ({ data, classes }) => {
                             </Typography>
                             <Button>
                               <Link
-                                to={`/blogs/${slugify(post.title, {
+                                to={`/blog/${slugify(post.title, {
                                   replacement: "-",
                                   lower: true,
                                 })}`}
