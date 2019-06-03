@@ -60,7 +60,9 @@ const ProcessPage = ({ data, classes }) => {
 
   return (
     <>
-      {pageData.pageName ? <SEO title={`${pageData.pageName} Page`} /> : null}
+      {pageData.pageName ? (
+        <SEO title={`${pageData.pageName} Page`} article />
+      ) : null}
       <Container maxWidth={"lg"} className={""}>
         <Grid container spacing={2} className={classes.containerGrid}>
           <Grid xs={12} item>

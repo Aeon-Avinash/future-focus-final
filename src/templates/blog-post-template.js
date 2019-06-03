@@ -78,6 +78,13 @@ const styles = theme => ({
     opacity: "0.75",
     background: "#3f51b580",
   },
+  paperBlogSignature: {
+    padding: 2 * theme.spacing(2),
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 })
 
 const BlogTemplate = ({ data, classes }) => {
@@ -88,7 +95,7 @@ const BlogTemplate = ({ data, classes }) => {
 
   return (
     <>
-      {post.title ? <SEO title={`${post.title} Page`} /> : null}
+      {post.title ? <SEO title={`${post.title} Page`} article /> : null}
       <Container maxWidth={"lg"} className={""}>
         <Grid container spacing={2} className={classes.containerGrid}>
           <Grid xs={12} item>
@@ -188,17 +195,30 @@ const BlogTemplate = ({ data, classes }) => {
           </Grid>
 
           <Grid xs={12} item>
-            <Paper className={classes.paper}>
-              {post.author ? (
-                <Typography variant="body2" gutterBottom>
-                  About the author: {post.author}
+            <Paper className={classes.paperBlogSignature}>
+              {post.aboutAuthor && post.author ? (
+                <Typography
+                  variant="body2"
+                  component="h2"
+                  style={{ maxWidth: "48em", width: "100%" }}
+                  gutterBottom
+                >
+                  <p style={{ marginBottom: "0.5rem" }}>About the author:</p>
+                  <p
+                    style={{ marginBottom: "0.5rem" }}
+                    dangerouslySetInnerHTML={{
+                      __html: post.aboutAuthor.childMarkdownRemark.html,
+                    }}
+                  />
+                  <p style={{ textAlign: "left" }}>{post.author}</p>
                 </Typography>
               ) : null}
+
               {post.blogSignature ? (
                 <Typography
                   variant="body2"
                   component="h2"
-                  gutterBottom
+                  style={{ maxWidth: "48em", width: "100%" }}
                   dangerouslySetInnerHTML={{
                     __html: post.blogSignature.childMarkdownRemark.html,
                   }}
@@ -229,6 +249,11 @@ export const pageQuery = graphql`
       content {
         childMarkdownRemark {
           excerpt
+          html
+        }
+      }
+      aboutAuthor {
+        childMarkdownRemark {
           html
         }
       }

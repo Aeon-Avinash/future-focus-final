@@ -6,6 +6,9 @@ module.exports = {
   siteMetadata: {
     title: `Future Focus HR Services`,
     description: `Future-focus services group has a mission to accomplish by providing the best accessible platform to both our client organizations and job seekers for achieving the utmost success.`,
+    url: "https://future-focus-hr-services.netlify.com",
+    image: "/images/ff-icon.png",
+    twitterUsername: "@futurefocus",
     author: `@aeondevworks`,
   },
   plugins: [
@@ -24,13 +27,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Future Focus HR Services`,
+        short_name: `Future-Focus`,
         start_url: `/`,
-        background_color: `#3f51b5`,
+        background_color: `#ffc400`,
         theme_color: `#3f51b5`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `src/images/ff-icon.png`, // This path is relative to the root of the site.
+        crossOrigin: `use-credentials`,
       },
     },
     {
@@ -100,6 +104,18 @@ module.exports = {
     // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-netlify`,
+      // options: {
+      //   headers: {}, // option to add more headers. `Link` headers are transformed by the below criteria
+      //   allPageHeaders: [], // option to add headers for all pages. `Link` headers are transformed by the below criteria
+      //   mergeSecurityHeaders: true, // boolean to turn off the default security headers
+      //   mergeLinkHeaders: true, // boolean to turn off the default gatsby js headers
+      //   mergeCachingHeaders: true, // boolean to turn off the default caching headers
+      //   transformHeaders: (headers, path) => headers, // optional transform for manipulating headers under each path (e.g.sorting), etc.
+      //   generateMatchPathRewrites: true, // boolean to turn off automatic creation of redirect rules for client only paths
+      // },
+    },
+    `gatsby-plugin-offline`,
   ],
 }

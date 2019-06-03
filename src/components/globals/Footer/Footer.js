@@ -48,7 +48,7 @@ const Footer = ({ classes }) => {
             © {new Date().getFullYear()}
             {`, `}
             <MUILink
-              href="https://www.futurefocushrservices.com"
+              href="https://future-focus-hr-services.netlify.com/"
               target="_blank"
               rel="noopener"
             >
