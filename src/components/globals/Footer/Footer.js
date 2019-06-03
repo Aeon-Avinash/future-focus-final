@@ -24,9 +24,9 @@ const styles = theme => ({
     justifyContent: "space-evenly",
     margin: "5px auto",
   },
-  outLinksDiv: {
-    textAlign: "center",
-  },
+  // outLinksDiv: {
+  //   textAlign: "center",
+  // },
 })
 
 const Footer = ({ classes }) => {
