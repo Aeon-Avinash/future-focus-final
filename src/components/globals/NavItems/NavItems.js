@@ -1,22 +1,18 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Button } from "@material-ui/core"
 import Link from "../MyLink/MyLink"
 
 const renderNavItems = allPages => {
   return allPages.map(({ node: link }) => (
-    <Button
+    <Link
       key={link.id}
-      variant={link.pageUrl === "/apply/" ? "outlined" : "text"}
+      to={link.pageUrl}
+      variant={"button"}
+      activeStyle
+      partiallyActive={link.pageUrl === "/blog/" ? true : false}
     >
-      <Link
-        to={link.pageUrl}
-        activeStyle
-        partiallyActive={link.pageUrl === "/blog/" ? true : false}
-      >
-        {link.pageName}
-      </Link>
-    </Button>
+      {link.pageName}
+    </Link>
   ))
 }
 

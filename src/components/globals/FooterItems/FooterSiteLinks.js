@@ -1,13 +1,12 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Button } from "@material-ui/core"
 import Link from "../MyLink/MyLink"
 
 const renderFooterSiteLinks = footerSiteLinks => {
   return footerSiteLinks.map(({ node: link }) => (
-    <Button key={link.id}>
-      <Link to={link.linkTo}>{link.linkText}</Link>
-    </Button>
+    <Link key={link.id} to={link.linkTo} variant={"button"}>
+      {link.linkText}
+    </Link>
   ))
 }
 

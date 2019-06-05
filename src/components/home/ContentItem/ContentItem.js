@@ -1,8 +1,8 @@
 import React from "react"
-import { withStyles, useTheme } from "@material-ui/core/styles"
+import clsx from "clsx"
+import { withStyles } from "@material-ui/core/styles"
 import {
   Typography,
-  Button,
   Grid,
   Card,
   CardContent,
@@ -36,44 +36,38 @@ const styles = theme => ({
       flex: 1,
     },
   },
-})
-
-const cardStyles = props => {
-  const theme = useTheme()
-  return {
-    cardItem: {
-      display: "flex",
-      // for testing passing of variable props:
-      // backgroundColor: props => {
-      //   return props.category === "process" ? "salmon" : "white"
-      // },
-      [theme.breakpoints.down("sm")]: {
-        flexDirection: "column",
-        width: "100%",
-      },
-      [theme.breakpoints.up("sm")]: {
-        flexDirection: "row",
-        height: "auto",
-      },
-      [theme.breakpoints.up("lg")]: {
-        flexDirection: "column",
-        height: props => (props.category === "process" ? "400px" : "500px"),
-      },
+  cardItemAll: {
+    display: "flex",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      width: "100%",
     },
-  }
-}
-
-const MyCardRaw = props => {
-  const { classes, category, ...others } = props
-  return <Card className={classes.cardItem} {...others} />
-}
-
-const MyCard = withStyles(cardStyles)(MyCardRaw)
+    [theme.breakpoints.up("sm")]: {
+      flexDirection: "row",
+      height: "auto",
+    },
+    [theme.breakpoints.up("lg")]: {
+      flexDirection: "column",
+      height: "500px",
+    },
+  },
+  cardItemProcess: {
+    [theme.breakpoints.up("lg")]: {
+      flexDirection: "column",
+      height: "400px",
+    },
+  },
+})
 
 const ContentItem = ({ item, linkTo, handleClick, classes }) => {
   return (
     <Grid item xs={12} md={6} lg={3}>
-      <MyCard category={item.category}>
+      <Card
+        className={clsx(
+          classes.cardItemAll,
+          item.category === "process" ? classes.cardItemProcess : null
+        )}
+      >
         {item.image ? (
           <div className={classes.cardImage}>
             <Img fluid={item.image.fluid} alt={item.image.title} />
@@ -102,12 +96,16 @@ const ContentItem = ({ item, linkTo, handleClick, classes }) => {
             </Typography>
           ) : null}
           <CardActions>
-            <Button variant="text" onClick={handleClick.bind(this, item.id)}>
-              <Link to={linkTo}>Read more</Link>
-            </Button>
+            <Link
+              to={linkTo}
+              variant="button"
+              onClick={handleClick.bind(this, item.id)}
+            >
+              Read more
+            </Link>
           </CardActions>
         </CardContent>
-      </MyCard>
+      </Card>
     </Grid>
   )
 }

@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import slugify from "slugify"
 import { withStyles } from "@material-ui/core/styles"
-import { Button, Typography, Paper, Grid, Container } from "@material-ui/core"
+import { Typography, Paper, Grid, Container } from "@material-ui/core"
 
 import SEO from "../components/seo"
 import Link from "../components/globals/MyLink/MyLink"
@@ -169,24 +169,24 @@ const BlogTemplate = ({ data, classes }) => {
                             >
                               {post.title}
                             </Typography>
-                            <Button>
-                              <Link
-                                to={`/blog/${slugify(post.title, {
-                                  replacement: "-",
-                                  lower: true,
-                                })}`}
-                              >
-                                Read more
-                              </Link>
-                            </Button>
+
+                            <Link
+                              to={`/blog/${slugify(post.title, {
+                                replacement: "-",
+                                lower: true,
+                              })}`}
+                              variant={"button"}
+                            >
+                              Read more
+                            </Link>
                           </div>
                         ) : null}
                       </div>
                     ))}
                     <div>
-                      <Button>
-                        <Link to={`/blog/`}>Back to Blog Index</Link>
-                      </Button>
+                      <Link to={`/blog/`} variant={"button"}>
+                        Back to Blog Index
+                      </Link>
                     </div>
                   </Paper>
                 </Grid>

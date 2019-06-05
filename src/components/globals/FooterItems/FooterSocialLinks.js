@@ -2,19 +2,15 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link as MUILink } from "@material-ui/core"
 import { FaFacebookSquare, FaTwitterSquare, FaLinkedin } from "react-icons/fa"
-
-const footerSocialIconStyles = {
-  color: "#3f51b5",
-  fontSize: "1.5rem",
-}
+import "./FooterLinks.css"
 
 const SelectIcon = ({ linkText }) => {
   if (linkText === "facebook") {
-    return <FaFacebookSquare style={footerSocialIconStyles} />
+    return <FaFacebookSquare className={"footerSocialIcon"} />
   } else if (linkText === "twitter") {
-    return <FaTwitterSquare style={footerSocialIconStyles} />
+    return <FaTwitterSquare className={"footerSocialIcon"} />
   } else if (linkText === "linked-in") {
-    return <FaLinkedin style={footerSocialIconStyles} />
+    return <FaLinkedin className={"footerSocialIcon"} />
   } else {
     return null
   }

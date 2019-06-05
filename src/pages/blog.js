@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import slugify from "slugify"
 import { withStyles } from "@material-ui/core/styles"
-import { Button, Typography, Paper, Grid, Container } from "@material-ui/core"
+import { Typography, Paper, Grid, Container } from "@material-ui/core"
 
 import Img from "../components/globals/MyImg/MyImg"
 import SEO from "../components/seo"
@@ -67,6 +67,15 @@ const styles = theme => ({
       },
     },
   },
+  contentLink: {
+    // textAlign: "center",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: "80%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "20%",
+    },
+  },
 })
 
 const BlogPage = ({ data, classes }) => {
@@ -117,16 +126,18 @@ const BlogPage = ({ data, classes }) => {
                           __html: post.content.childMarkdownRemark.excerpt,
                         }}
                       />
-                      <Button>
+
+                      <div className={classes.contentLink}>
                         <Link
                           to={`/blog/${slugify(post.title, {
                             replacement: "-",
                             lower: true,
                           })}`}
+                          variant={"button"}
                         >
                           Read more
                         </Link>
-                      </Button>
+                      </div>
                     </>
                   ) : null}
                 </div>

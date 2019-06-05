@@ -17,6 +17,17 @@ const styles = theme => ({
     padding: `0px 1.0875rem 1.45rem`,
     paddingTop: 0,
   },
+  containerGrid: {
+    "& > div": {
+      margin: `${theme.margin.middleElem} auto`,
+    },
+    "& > div:first-child": {
+      marginTop: `${theme.margin.edgeElem}`,
+    },
+    "& > div:last-child": {
+      marginBottom: `${theme.margin.edgeElem}`,
+    },
+  },
   paper: {
     padding: 2 * theme.spacing(2),
   },
@@ -80,7 +91,7 @@ const ProcessPage = ({ data, classes }) => {
             </Paper>
           </Grid>
 
-          <Grid xs={12} item style={{ margin: "20px auto" }}>
+          <Grid xs={12} item >
             {processes.map(({ node: process }) => (
               <Paper key={process.id} className={classes.paperContentItem}>
                 {process.image ? (

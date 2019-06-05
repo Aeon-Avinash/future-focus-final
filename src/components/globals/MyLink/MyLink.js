@@ -22,7 +22,16 @@ const MyLink = props => {
     />
   )
 
-  return <Link component={renderLink}>{props.children}</Link>
+  return (
+    <Link
+      component={renderLink}
+      variant={props.variant === "button" ? "button" : null}
+      onClick={props.onClick}
+      style={props.style}
+    >
+      {props.children}
+    </Link>
+  )
 }
 
 export default MyLink
