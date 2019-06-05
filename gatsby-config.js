@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `Future Focus HR Services`,
     description: `Future-focus services group has a mission to accomplish by providing the best accessible platform to both our client organizations and job seekers for achieving the utmost success.`,
-    url: "https://future-focus-hr-services.netlify.com",
+    url: "https://futurefocushrservices.com",
     image: "/images/ff-icon.png",
     twitterUsername: "@futurefocus",
     author: `@aeondevworks`,

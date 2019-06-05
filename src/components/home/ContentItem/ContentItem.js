@@ -101,7 +101,7 @@ const ContentItem = ({ item, linkTo, handleClick, classes }) => {
               variant="button"
               onClick={handleClick.bind(this, item.id)}
             >
-              Read more
+              read more
             </Link>
           </CardActions>
         </CardContent>

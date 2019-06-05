@@ -80,7 +80,7 @@ class IndustriesPage extends Component {
   }
 
   scrollToTargetRef = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       window.scrollTo({
         behavior: "smooth",
         top: this.targetRef.current.offsetTop,
@@ -238,16 +238,16 @@ export const query = graphql`
           image {
             title
             fixed(width: 200) {
-              ...GatsbyContentfulFixed
+              ...GatsbyContentfulFixed_withWebp
             }
             fluid(maxWidth: 500) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           imageAlt {
             title
             fluid(maxWidth: 500) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }

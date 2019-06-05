@@ -28,6 +28,13 @@ const MyLink = props => {
       variant={props.variant === "button" ? "button" : null}
       onClick={props.onClick}
       style={props.style}
+      title={
+        typeof props.children !== "string"
+          ? props.to
+          : props.children === "read more"
+          ? `${props.children} - ${props.to}`
+          : props.children
+      }
     >
       {props.children}
     </Link>

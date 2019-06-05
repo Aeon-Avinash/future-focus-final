@@ -206,7 +206,7 @@ export const query = graphql`
       heroImage {
         title
         fluid {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       blockquote1 {
@@ -253,7 +253,7 @@ export const query = graphql`
           image {
             title
             fluid(maxWidth: 500, maxHeight: 300) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }
@@ -279,7 +279,7 @@ export const query = graphql`
           image {
             title
             fluid(maxWidth: 500, maxHeight: 300) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }
@@ -305,7 +305,7 @@ export const query = graphql`
           image {
             title
             fluid(maxWidth: 500, maxHeight: 300) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }

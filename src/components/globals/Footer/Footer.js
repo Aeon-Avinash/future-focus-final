@@ -29,7 +29,8 @@ const Footer = () => {
             © {new Date().getFullYear()}
             {`, `}
             <MUILink
-              href="https://future-focus-hr-services.netlify.com/"
+              href="https://futurefocushrservices.com"
+              title="https://futurefocushrservices.com"
               target="_blank"
               rel="noopener"
             >
@@ -39,6 +40,7 @@ const Footer = () => {
             {` `}
             <MUILink
               href="https://www.gatsbyjs.org"
+              title="https://www.gatsbyjs.org"
               target="_blank"
               rel="noopener"
             >
@@ -48,6 +50,7 @@ const Footer = () => {
             {` `}
             <MUILink
               href="https://github.com/Aeon-Avinash"
+              title="https://github.com/Aeon-Avinash"
               target="_blank"
               rel="noopener"
             >

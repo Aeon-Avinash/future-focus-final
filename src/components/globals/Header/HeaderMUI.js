@@ -97,6 +97,7 @@ const Header = ({ classes }) => {
                     className={classes.menuButton}
                     color="primary"
                     aria-label="Menu"
+                    title="Menu"
                     onClick={setMenu}
                   >
                     <MenuIcon />

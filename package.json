@@ -3,7 +3,7 @@
   "private": true,
   "description": "Future-focus services group has a mission to accomplish by providing the best accessible platform to both our client organizations and job seekers for achieving the utmost success.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Aeon Avinash <siteadmin@futurefocushrservices.com>",
   "dependencies": {
     "@material-ui/core": "^4.0.0-rc.0",
     "@material-ui/icons": "^3.0.2",

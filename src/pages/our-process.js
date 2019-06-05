@@ -162,10 +162,10 @@ export const query = graphql`
           image {
             title
             fixed(width: 200) {
-              ...GatsbyContentfulFixed
+              ...GatsbyContentfulFixed_withWebp
             }
             fluid(maxWidth: 500) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }

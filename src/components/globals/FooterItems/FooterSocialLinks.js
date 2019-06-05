@@ -18,7 +18,13 @@ const SelectIcon = ({ linkText }) => {
 
 const renderFooterSocialLinks = footerSocialLinks => {
   return footerSocialLinks.map(({ node: link }) => (
-    <MUILink key={link.id} href={link.linkTo} target="_blank" rel="noopener">
+    <MUILink
+      key={link.id}
+      href={link.linkTo}
+      title={`connect on ${link.linkText}`}
+      target="_blank"
+      rel="noopener"
+    >
       <SelectIcon linkText={link.linkText} />
     </MUILink>
   ))

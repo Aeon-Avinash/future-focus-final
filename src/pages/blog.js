@@ -135,7 +135,7 @@ const BlogPage = ({ data, classes }) => {
                           })}`}
                           variant={"button"}
                         >
-                          Read more
+                          read more
                         </Link>
                       </div>
                     </>
@@ -157,7 +157,9 @@ export const query = graphql`
       pageName
       title
     }
-    getPosts: allContentfulTestBlogPage(sort: {fields: createdAt order: DESC}) {
+    getPosts: allContentfulTestBlogPage(
+      sort: { fields: createdAt, order: DESC }
+    ) {
       totalCount
       edges {
         node {
@@ -168,7 +170,7 @@ export const query = graphql`
           image {
             title
             fixed(width: 200) {
-              ...GatsbyContentfulFixed
+              ...GatsbyContentfulFixed_withWebp
             }
           }
           content {

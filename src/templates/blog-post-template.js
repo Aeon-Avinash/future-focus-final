@@ -175,7 +175,7 @@ const BlogTemplate = ({ data, classes }) => {
                               })}`}
                               variant={"button"}
                             >
-                              Read more
+                              read more
                             </Link>
                           </div>
                         ) : null}
@@ -241,7 +241,7 @@ export const pageQuery = graphql`
       author
       image {
         fluid {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       content {
@@ -273,7 +273,7 @@ export const pageQuery = graphql`
           image {
             title
             fixed(width: 200) {
-              ...GatsbyContentfulFixed
+              ...GatsbyContentfulFixed_withWebp
             }
           }
         }
