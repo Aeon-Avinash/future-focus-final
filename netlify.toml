@@ -6,7 +6,13 @@
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app. 
   ## Not needed for static site generators.
-
+  
+[[redirects]]
+  from = "https://future-focus-hr-services.netlify.com/*" 
+  to = "https://futurefocushrservices.com/:splat" 
+  status = 301 
+  force = true 
+  
 [[redirects]]
   from = "https://futurefocushrservices.com/*" 
   to = "https://www.futurefocushrservices.com/:splat" 
@@ -18,12 +24,6 @@
   to = "https://www.futurefocushrservices.com/:splat" 
   status = 301
   force = true
-
-[[redirects]]
-  from = "https://future-focus-hr-services.netlify.com/*" 
-  to = "https://www.futurefocushrservices.com/:splat" 
-  status = 301 
-  force = true 
 
   #  from = "/*"
   #  to = "/index.html"
