@@ -6,10 +6,25 @@
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app. 
   ## Not needed for static site generators.
-  #[[redirects]]
-  https://futurefocushrservices.com/* https://www.futurefocushrservices.com/:splat 301!
-  http://futurefocushrservices.com/* https://www.futurefocushrservices.com/:splat 301!
-  https://future-focus-hr-services.netlify.com/* https://www.futurefocushrservices.com/:splat 301!
+
+[[redirects]]
+  from = "https://futurefocushrservices.com/*" 
+  to = "https://www.futurefocushrservices.com/:splat" 
+  status = 301 
+  force = true
+
+[[redirects]]
+  from = "http://futurefocushrservices.com/*" 
+  to = "https://www.futurefocushrservices.com/:splat" 
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://future-focus-hr-services.netlify.com/*" 
+  to = "https://www.futurefocushrservices.com/:splat" 
+  status = 301 
+  force = true 
+
   #  from = "/*"
   #  to = "/index.html"
   #  status = 200
