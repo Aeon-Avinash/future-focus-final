@@ -33,9 +33,10 @@ const styles = theme => ({
     padding: 2 * theme.spacing(2),
   },
   paperContentItem: {
-    padding: 2 * theme.spacing(2),
+    // padding: 2 * theme.spacing(2, 0),
+    padding: 0,
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignItems: "flex-start",
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
@@ -48,7 +49,8 @@ const styles = theme => ({
     },
   },
   paperContentImage: {
-    margin: "5% auto",
+    margin: "0 auto",
+    marginBottom: theme.spacing(4),
     height: "auto",
     width: "100%",
   },
@@ -56,6 +58,8 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
+    // textAlign: "justify",
+    // hyphens: "auto",
   },
   paperContentMenu: {
     display: "flex",
@@ -68,15 +72,9 @@ const styles = theme => ({
     padding: 2 * theme.spacing(2),
   },
   menuPaperItem: {
-    margin: "10% auto",
-  },
-  svgTraceStyles: {
-    opacity: "1",
-    background: "#3f51b580",
-  },
-  imageStyles: {
-    opacity: "0.75",
-    background: "#3f51b580",
+    marginTop: 2 * theme.spacing(2),
+    marginBottom: 2 * theme.spacing(2),
+    marginLeft: "auto",
   },
   paperBlogSignature: {
     padding: 2 * theme.spacing(2),

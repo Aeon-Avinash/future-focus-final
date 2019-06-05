@@ -157,7 +157,7 @@ export const query = graphql`
       pageName
       title
     }
-    getPosts: allContentfulTestBlogPage {
+    getPosts: allContentfulTestBlogPage(sort: {fields: createdAt order: DESC}) {
       totalCount
       edges {
         node {
