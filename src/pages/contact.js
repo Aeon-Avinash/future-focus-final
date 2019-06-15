@@ -4,8 +4,7 @@ import { withStyles } from "@material-ui/core/styles"
 import { Typography, Paper, Grid, Container } from "@material-ui/core"
 
 import SEO from "../components/seo"
-// import ContactForm from "../components/forms/ContactForm/ContactFormMUI"
-import ContactForm from "../components/forms/ContactForm/ContactFormUppy"
+import ContactForm from "../components/forms/ContactForm/ContactForm"
 import GoogleMap from "../components/GoogleMap/GoogleMap"
 
 const styles = theme => ({

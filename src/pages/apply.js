@@ -4,8 +4,7 @@ import { withStyles } from "@material-ui/core/styles"
 import { Typography, Paper, Grid, Container } from "@material-ui/core"
 
 import SEO from "../components/seo"
-// import ApplyForm from "../components/forms/ApplyForm/ApplyFormMUI"
-import ApplyForm from "../components/forms/ApplyForm/ApplyFormUppy"
+import ApplyForm from "../components/forms/ApplyForm/ApplyForm"
 
 const styles = theme => ({
   root: {

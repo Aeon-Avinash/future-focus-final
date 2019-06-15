@@ -13,11 +13,10 @@ import {
   FormGroup,
   FormControlLabel,
 } from "@material-ui/core"
-
 import Uppy from "@uppy/core"
 import AwsS3 from "@uppy/aws-s3"
-import "@uppy/core/dist/style.css"
-import "@uppy/dashboard/dist/style.css"
+// import "@uppy/core/dist/style.css"
+// import "@uppy/dashboard/dist/style.css"
 import UppyDashboard from "../UppyDashboard/UppyDashboard"
 import SnackbarFF from "../Snackbar/Snackbar"
 import ReCaptcha from "../../ReCaptcha/ReCaptcha"
