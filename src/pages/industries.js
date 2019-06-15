@@ -213,14 +213,14 @@ class IndustriesPage extends Component {
 
 export const query = graphql`
   {
-    pageData: contentfulTestSitePages(pageUrl: { eq: "/industries/" }) {
+    pageData: contentfulSitePages(pageUrl: { eq: "/industries/" }) {
       pageUrl
       pageName
       title
     }
-    getIndustries: allContentfulTestContent(
+    getIndustries: allContentfulSectionContent(
       filter: { category: { eq: "industries" } }
-      sort: { fields: createdAt, order: ASC }
+      sort: { fields: sortOrder, order: ASC }
     ) {
       totalCount
       edges {

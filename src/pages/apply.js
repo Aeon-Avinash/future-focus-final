@@ -4,7 +4,8 @@ import { withStyles } from "@material-ui/core/styles"
 import { Typography, Paper, Grid, Container } from "@material-ui/core"
 
 import SEO from "../components/seo"
-import ApplyForm from "../components/forms/ApplyForm/ApplyFormMUI"
+// import ApplyForm from "../components/forms/ApplyForm/ApplyFormMUI"
+import ApplyForm from "../components/forms/ApplyForm/ApplyFormUppy"
 
 const styles = theme => ({
   root: {
@@ -111,7 +112,7 @@ const ApplyPage = ({ data, classes }) => {
           </Grid>
 
           <Grid xs={12} item>
-            {(typeof window !== 'undefined') ? <ApplyForm /> : null}
+            {typeof window !== "undefined" ? <ApplyForm /> : null}
           </Grid>
         </Grid>
       </Container>
@@ -123,7 +124,7 @@ export default withStyles(styles)(ApplyPage)
 
 export const query = graphql`
   {
-    pageData: contentfulTestSitePages(pageUrl: { eq: "/apply/" }) {
+    pageData: contentfulSitePages(pageUrl: { eq: "/apply/" }) {
       pageUrl
       pageName
       title

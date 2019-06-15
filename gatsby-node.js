@@ -8,7 +8,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   return graphql(`
     {
-      allContentfulTestBlogPage {
+      allContentfulSiteBlogPosts {
         totalCount
         edges {
           node {
@@ -24,7 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
         return Promise.reject(result.errors)
       }
 
-      result.data.allContentfulTestBlogPage.edges.forEach(({ node }) => {
+      result.data.allContentfulSiteBlogPosts.edges.forEach(({ node }) => {
         createPage({
           path: `/blog/${slugify(node.title, {
             replacement: "-",

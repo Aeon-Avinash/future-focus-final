@@ -152,12 +152,12 @@ const BlogPage = ({ data, classes }) => {
 
 export const query = graphql`
   {
-    pageData: contentfulTestSitePages(pageUrl: { eq: "/blog/" }) {
+    pageData: contentfulSitePages(pageUrl: { eq: "/blog/" }) {
       pageUrl
       pageName
       title
     }
-    getPosts: allContentfulTestBlogPage(
+    getPosts: allContentfulSiteBlogPosts(
       sort: { fields: createdAt, order: DESC }
     ) {
       totalCount

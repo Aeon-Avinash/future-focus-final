@@ -226,7 +226,7 @@ const AboutPage = ({ data, classes }) => {
 
 export const query = graphql`
   {
-    pageData: contentfulTestSitePages(pageUrl: { eq: "/about/" }) {
+    pageData: contentfulSitePages(pageUrl: { eq: "/about/" }) {
       pageName
       title
       blockquote1 {

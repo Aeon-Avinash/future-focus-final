@@ -14,7 +14,7 @@ const FooterOutLinks = () => {
   const { footerOutLinks } = useStaticQuery(
     graphql`
       query {
-        footerOutLinks: allContentfulSiteFooterElement(
+        footerOutLinks: allContentfulSiteFooterLinks(
           filter: { linkType: { eq: "outLink" } }
           sort: { fields: sortOrder, order: ASC }
         ) {

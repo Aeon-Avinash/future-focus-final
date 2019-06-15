@@ -136,12 +136,12 @@ const ProcessPage = ({ data, classes }) => {
 
 export const query = graphql`
   {
-    pageData: contentfulTestSitePages(pageUrl: { eq: "/our-process/" }) {
+    pageData: contentfulSitePages(pageUrl: { eq: "/our-process/" }) {
       pageUrl
       pageName
       title
     }
-    getProcesses: allContentfulTestContent(
+    getProcesses: allContentfulSectionContent(
       filter: { category: { eq: "process" } }
       sort: { fields: sortOrder, order: ASC }
     ) {

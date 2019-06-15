@@ -20,7 +20,7 @@ const NavItems = () => {
   const { allPages } = useStaticQuery(
     graphql`
       query {
-        allPages: allContentfulTestSitePages(
+        allPages: allContentfulSitePages(
           sort: { fields: sortOrder, order: ASC }
         ) {
           totalCount

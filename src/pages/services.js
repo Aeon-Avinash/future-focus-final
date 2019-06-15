@@ -212,14 +212,14 @@ class ServicesPage extends Component {
 
 export const query = graphql`
   {
-    pageData: contentfulTestSitePages(pageUrl: { eq: "/services/" }) {
+    pageData: contentfulSitePages(pageUrl: { eq: "/services/" }) {
       pageUrl
       pageName
       title
     }
-    getServices: allContentfulTestContent(
+    getServices: allContentfulSectionContent(
       filter: { category: { eq: "services" } }
-      sort: { fields: createdAt, order: ASC }
+      sort: { fields: sortOrder, order: ASC }
     ) {
       totalCount
       edges {

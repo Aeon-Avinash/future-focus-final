@@ -200,7 +200,7 @@ const HomePage = ({ data, classes }) => {
 
 export const query = graphql`
   {
-    pageData: contentfulTestSitePages(pageUrl: { eq: "/" }) {
+    pageData: contentfulSitePages(pageUrl: { eq: "/" }) {
       pageName
       title
       heroImage {
@@ -240,7 +240,7 @@ export const query = graphql`
         }
       }
     }
-    getProcesses: allContentfulTestContent(
+    getProcesses: allContentfulSectionContent(
       filter: { category: { eq: "process" } }
       sort: { fields: sortOrder, order: ASC }
     ) {
@@ -259,9 +259,9 @@ export const query = graphql`
         }
       }
     }
-    getServices: allContentfulTestContent(
+    getServices: allContentfulSectionContent(
       filter: { category: { eq: "services" } }
-      sort: { fields: createdAt, order: ASC }
+      sort: { fields: sortOrder, order: ASC }
     ) {
       totalCount
       edges {
@@ -285,9 +285,9 @@ export const query = graphql`
         }
       }
     }
-    getIndustries: allContentfulTestContent(
+    getIndustries: allContentfulSectionContent(
       filter: { category: { eq: "industries" } }
-      sort: { fields: createdAt, order: ASC }
+      sort: { fields: sortOrder, order: ASC }
     ) {
       totalCount
       edges {

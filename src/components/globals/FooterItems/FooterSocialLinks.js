@@ -34,7 +34,7 @@ const FooterSocialLinks = () => {
   const { footerSocialLinks } = useStaticQuery(
     graphql`
       query {
-        footerSocialLinks: allContentfulSiteFooterElement(
+        footerSocialLinks: allContentfulSiteFooterLinks(
           filter: { linkType: { eq: "socialLink" } }
           sort: { fields: sortOrder, order: ASC }
         ) {

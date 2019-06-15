@@ -4,7 +4,8 @@ import { withStyles } from "@material-ui/core/styles"
 import { Typography, Paper, Grid, Container } from "@material-ui/core"
 
 import SEO from "../components/seo"
-import ContactForm from "../components/forms/ContactForm/ContactFormMUI"
+// import ContactForm from "../components/forms/ContactForm/ContactFormMUI"
+import ContactForm from "../components/forms/ContactForm/ContactFormUppy"
 import GoogleMap from "../components/GoogleMap/GoogleMap"
 
 const styles = theme => ({
@@ -147,8 +148,11 @@ const ContactPage = ({ data, classes }) => {
                 </Typography>
               ) : null}
               <Paper className={classes.paperGoogleMap}>
-                {(typeof window !== "undefined") && pageData.paragraph1 ? (
-                  <GoogleMap google={window.google} contactInfo={pageData.paragraph1.childMarkdownRemark.html}/>
+                {typeof window !== "undefined" && pageData.paragraph1 ? (
+                  <GoogleMap
+                    google={window.google}
+                    contactInfo={pageData.paragraph1.childMarkdownRemark.html}
+                  />
                 ) : null}
               </Paper>
             </Paper>
@@ -163,7 +167,7 @@ export default withStyles(styles)(ContactPage)
 
 export const query = graphql`
   {
-    pageData: contentfulTestSitePages(pageUrl: { eq: "/contact/" }) {
+    pageData: contentfulSitePages(pageUrl: { eq: "/contact/" }) {
       pageUrl
       pageName
       title

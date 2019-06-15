@@ -86,7 +86,7 @@ const styles = theme => ({
 })
 
 const BlogTemplate = ({ data, classes }) => {
-  const post = data.contentfulTestBlogPage
+  const post = data.contentfulSiteBlogPosts
   const allPosts = data.getPosts.edges.filter(
     ({ node: item }) => item.id !== post.id
   )
@@ -232,7 +232,7 @@ const BlogTemplate = ({ data, classes }) => {
 
 export const pageQuery = graphql`
   query BlogPostById($id: String!) {
-    contentfulTestBlogPage(id: { eq: $id }) {
+    contentfulSiteBlogPosts(id: { eq: $id }) {
       internal {
         type
       }
@@ -261,7 +261,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    getPosts: allContentfulTestBlogPage(
+    getPosts: allContentfulSiteBlogPosts(
       sort: { fields: createdAt, order: DESC }
       limit: 3
     ) {
