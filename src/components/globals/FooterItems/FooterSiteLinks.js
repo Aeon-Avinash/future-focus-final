@@ -1,17 +1,22 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import uuid from "uuid/v4"
 import Link from "../MyLink/MyLink"
 
 const renderFooterSiteLinks = footerSiteLinks => {
   return footerSiteLinks.map(({ node: link }) => (
-    <Link key={link.id} to={link.linkTo} variant={"button"}>
-      {link.linkText}
+    <Link
+      key={link.id ? link.id : uuid()}
+      to={link.linkTo ? link.linkTo : "/"}
+      variant={"button"}
+    >
+      {link.linkText ? link.linkText : "Home"}
     </Link>
   ))
 }
 
 const FooterSiteLinks = () => {
-  const { footerSiteLinks } = useStaticQuery(
+  let { footerSiteLinks } = useStaticQuery(
     graphql`
       query {
         footerSiteLinks: allContentfulSiteFooterLinks(
@@ -32,6 +37,17 @@ const FooterSiteLinks = () => {
       }
     `
   )
+  if (footerSiteLinks && footerSiteLinks.edges) {
+    footerSiteLinks = footerSiteLinks
+  } else {
+    footerSiteLinks.edges = Array(3)
+      .fill(0)
+      .map(_ => ({
+        id: uuid(),
+        linkTo: "/",
+        linkText: "Home",
+      }))
+  }
   return renderFooterSiteLinks(footerSiteLinks.edges)
 }
 
