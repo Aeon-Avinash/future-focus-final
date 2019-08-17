@@ -37,9 +37,7 @@ const FooterSiteLinks = () => {
       }
     `
   )
-  if (footerSiteLinks && footerSiteLinks.edges) {
-    footerSiteLinks = footerSiteLinks
-  } else {
+  if (!footerSiteLinks || !footerSiteLinks.edges) {
     footerSiteLinks.edges = Array(3)
       .fill(0)
       .map(_ => ({

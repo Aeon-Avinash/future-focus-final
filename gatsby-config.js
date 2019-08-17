@@ -4,8 +4,8 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Future Focus HR Services`,
-    description: `Future-focus services group has a mission to accomplish by providing the best accessible platform to both our client organizations and job seekers for achieving the utmost success.`,
+    title: `Future Focus HR Services - Rourkela`,
+    description: `Future-focus hr services based in Rourkela, Odisha has a mission to accomplish by providing the best accessible platform to both our client organizations and job seekers for achieving the utmost success.`,
     url: "https://futurefocushrservices.com",
     image: "/images/ff-icon.png",
     twitterUsername: "@futurefocus",

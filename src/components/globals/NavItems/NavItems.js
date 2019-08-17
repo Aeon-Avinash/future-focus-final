@@ -10,7 +10,7 @@ const renderNavItems = allPages => {
       to={link.pageUrl ? link.pageUrl : "/"}
       variant={"button"}
       activeStyle
-      partiallyActive={(link.pageUrl && link.pageUrl === "/blog/") ? true : false}
+      partiallyActive={link.pageUrl && link.pageUrl === "/blog/" ? true : false}
     >
       {link.pageName ? link.pageName : "FF_Index"}
     </Link>
@@ -37,10 +37,15 @@ const NavItems = () => {
       }
     `
   )
-  if(allPages && allPages.edges){
-    allPages = allPages
-  } else {
-    allPages.edges = Array(7).fill(0).map((_) => ({id: uuid(), pageUrl: "/", pageName: "FF_Index", title: "FF Default Page"}))
+  if (!allPages || !allPages.edges) {
+    allPages.edges = Array(7)
+      .fill(0)
+      .map(_ => ({
+        id: uuid(),
+        pageUrl: "/",
+        pageName: "FF_Index",
+        title: "FF Default Page",
+      }))
   }
   return renderNavItems(allPages.edges)
 }

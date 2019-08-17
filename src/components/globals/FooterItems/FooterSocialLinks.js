@@ -55,9 +55,7 @@ const FooterSocialLinks = () => {
       }
     `
   )
-  if (footerSocialLinks && footerSocialLinks.edges) {
-    footerSocialLinks = footerSocialLinks
-  } else {
+  if (!footerSocialLinks || !footerSocialLinks.edges) {
     footerSocialLinks.edges = Array(3)
       .fill(0)
       .map((_, index) => ({

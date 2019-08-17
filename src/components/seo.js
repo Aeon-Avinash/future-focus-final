@@ -35,6 +35,9 @@ function SEO({ title, description, image, pathname, article, lang, meta }) {
   const metaImage = `${siteUrl}${image || defaultImage}`
   const metaUrl = `${siteUrl}${pathname || "/"}`
 
+  console.log(`${title} description`, description)
+  console.log(`${title} defaultDescription`, defaultDescription)
+
   return (
     <Helmet
       htmlAttributes={{
@@ -46,6 +49,10 @@ function SEO({ title, description, image, pathname, article, lang, meta }) {
         {
           name: `description`,
           content: metaDescription,
+        },
+        {
+          name: `business:description`,
+          content: "Job Recruitment Services, Rourkela, Odisha, India",
         },
         {
           property: `og:title`,
