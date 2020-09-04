@@ -11,7 +11,7 @@
     "@uppy/aws-s3": "^1.1.0",
     "@uppy/core": "^1.1.0",
     "@uppy/react": "^1.1.0",
-    "airtable": "^0.6.0",
+    "airtable": "^0.7.2",
     "clsx": "^1.0.4",
     "final-form": "^4.13.0",
     "final-form-material-ui": "^0.3.0",
