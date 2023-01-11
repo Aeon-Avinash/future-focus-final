@@ -32,7 +32,7 @@
     "gatsby-source-contentful": "^2.0.67",
     "gatsby-source-filesystem": "^2.0.36",
     "gatsby-source-googlemaps-geocoding": "^1.0.0",
-    "gatsby-transformer-remark": "^2.3.12",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.1.19",
     "gatsby-transformer-sqip": "^2.0.35",
     "google-maps-react": "^2.0.2",
